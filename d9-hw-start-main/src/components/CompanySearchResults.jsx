@@ -32,6 +32,7 @@ const CompanySearchResults = () => {
 
   return (
     <Container>
+      {/* <h1 className="text-center">{jobs[0].company_name}</h1> */}
       <Row>
         <Col>
           {jobs.map((jobData) => (

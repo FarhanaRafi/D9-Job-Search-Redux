@@ -1,9 +1,16 @@
 import { Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { AiFillHeart } from "react-icons/ai";
+import { useState } from "react";
 
 const Job = ({ data }) => {
   const dispatch = useDispatch();
+  const [active, setActive] = useState(false);
+
+  const buttonClick = () => {
+    setActive(!active);
+  };
   return (
     <Row
       className="mx-0 mt-3 p-3"
@@ -18,16 +25,18 @@ const Job = ({ data }) => {
         </a>
       </Col>
       <Col xs={3}>
-        <Button
-          onClick={() => {
-            dispatch({
-              type: "ADD_TO_FAVORITES",
-              payload: data,
-            });
-          }}
-        >
-          Add
-        </Button>
+        <div onClick={buttonClick}>
+          <AiFillHeart
+            style={{ fontSize: 25 }}
+            color={active ? "dodgerblue" : "black"}
+            onClick={() => {
+              dispatch({
+                type: "ADD_TO_FAVORITES",
+                payload: data,
+              });
+            }}
+          />
+        </div>
       </Col>
     </Row>
   );
