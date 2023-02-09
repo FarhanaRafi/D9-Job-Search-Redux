@@ -21,9 +21,6 @@ const Favorites = () => {
             {favorite.map((job, i) => (
               <>
                 <tr key={i}>
-                  <td class="expand-button">
-                    <MDBBtn onClick={toggleShow}></MDBBtn>
-                  </td>
                   <td>
                     <Link to={`/${job.company_name}`}>{job.company_name} </Link>
                   </td>
@@ -45,6 +42,9 @@ const Favorites = () => {
                     >
                       <FaTrash />
                     </Button>
+                  </td>
+                  <td class="expand-button">
+                    <MDBBtn onClick={toggleShow}>Description</MDBBtn>
                   </td>
                 </tr>
                 <tr>
