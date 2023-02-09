@@ -1,31 +1,32 @@
-import { useEffect, useState } from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
-import Job from './Job'
-import { useParams } from 'react-router-dom'
+import { useEffect, useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import Job from "./Job";
+import { useParams } from "react-router-dom";
 
 const CompanySearchResults = () => {
-  const [jobs, setJobs] = useState([])
-  const params = useParams()
+  const [jobs, setJobs] = useState([]);
+  const params = useParams();
 
-  const baseEndpoint = 'https://strive-jobs-api.herokuapp.com/jobs?company='
+  const baseEndpoint = "https://strive-jobs-api.herokuapp.com/jobs?company=";
 
   useEffect(() => {
-    getJobs()
-  }, [])
+    getJobs();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const getJobs = async () => {
     try {
-      const response = await fetch(baseEndpoint + params.companyName)
+      const response = await fetch(baseEndpoint + params.companyName);
       if (response.ok) {
-        const { data } = await response.json()
-        setJobs(data)
+        const { data } = await response.json();
+        setJobs(data);
       } else {
-        alert('Error fetching results')
+        alert("Error fetching results");
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   return (
     <Container>
@@ -37,7 +38,7 @@ const CompanySearchResults = () => {
         </Col>
       </Row>
     </Container>
-  )
-}
+  );
+};
 
-export default CompanySearchResults
+export default CompanySearchResults;
