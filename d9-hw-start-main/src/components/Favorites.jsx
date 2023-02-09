@@ -2,7 +2,8 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { Col, Row, Button, Container } from "react-bootstrap";
+import { Button, Container, Table } from "react-bootstrap";
+import { format, parseISO } from "date-fns";
 
 const Favorites = () => {
   let favorite = useSelector((state) => state.favorites.content);
@@ -10,13 +11,18 @@ const Favorites = () => {
   return (
     <>
       <Container>
-        <Row>
-          <h1>Favorites</h1>
-          <Col sm={12}>
-            <ul style={{ listStyle: "none" }}>
-              {favorite.map((job, i) => (
-                <li key={i} className="my-4">
+        <h1 className="text-center">Favorites</h1>
+        <Table hover>
+          <tbody>
+            {favorite.map((job, i) => (
+              <tr key={i}>
+                <td>
                   <Link to={`/${job.company_name}`}>{job.company_name} </Link>
+                </td>
+                <td>{job.title}</td>
+                <td>{job.category}</td>
+                <td>{format(parseISO(job.publication_date), `dd-LL-yyyy`)}</td>
+                <td>
                   <Button
                     className="ml-5"
                     variant="danger"
@@ -29,15 +35,39 @@ const Favorites = () => {
                   >
                     <FaTrash />
                   </Button>
-                  <Button className="ml-5">Details</Button>
-                </li>
-              ))}
-            </ul>
-          </Col>
-        </Row>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
       </Container>
     </>
   );
 };
 
 export default Favorites;
+
+// <Row>
+//   <h1>Favorites</h1>
+//   <Col sm={12}>
+//     <ul style={{ listStyle: "none" }}>
+//       {favorite.map((job, i) => (
+//         <li key={i} className="my-4">
+//           <Link to={`/${job.company_name}`}>{job.company_name} </Link>
+//           <Button
+//             className="ml-5"
+//             variant="danger"
+//             onClick={() => {
+//               dispatch({
+//                 type: "REMOVE_FROM_FAVORITE",
+//                 payload: i,
+//               });
+//             }}
+//           >
+//             <FaTrash />
+//           </Button>
+//         </li>
+//       ))}
+//     </ul>
+//   </Col>
+// </Row>
