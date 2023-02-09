@@ -10,8 +10,20 @@ const mainReducer = (state = initialState, action) => {
       return {
         ...state,
         favorites: {
-          ...state,
+          ...state.favorites,
           content: [...state.favorites.content, action.payload],
+        },
+      };
+
+    case "REMOVE_FROM_FAVORITE":
+      return {
+        ...state,
+        favorites: {
+          ...state.favorites,
+          content: [
+            ...state.favorites.content.slice(0, action.payload),
+            ...state.favorites.content.slice(action.payload + 1),
+          ],
         },
       };
 
