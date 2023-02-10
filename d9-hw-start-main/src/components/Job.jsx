@@ -1,4 +1,4 @@
-import { Row, Col, Button } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { AiFillHeart } from "react-icons/ai";
@@ -25,18 +25,18 @@ const Job = ({ data }) => {
         </a>
       </Col>
       <Col xs={3}>
-        <div onClick={buttonClick}>
-          <AiFillHeart
-            style={{ fontSize: 25 }}
-            color={active ? "dodgerblue" : "black"}
-            onClick={() => {
-              dispatch({
-                type: "ADD_TO_FAVORITES",
-                payload: data,
-              });
-            }}
-          />
-        </div>
+        {/* onClick={buttonClick} */}
+        <AiFillHeart
+          style={{ fontSize: 25 }}
+          color={active ? "dodgerblue" : "black"}
+          onClick={() => {
+            buttonClick();
+            dispatch({
+              type: "ADD_TO_FAVORITES",
+              payload: data,
+            });
+          }}
+        />
       </Col>
     </Row>
   );
