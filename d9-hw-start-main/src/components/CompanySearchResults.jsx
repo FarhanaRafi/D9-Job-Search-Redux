@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 const CompanySearchResults = () => {
   const dispatch = useDispatch();
 
-  const [jobs, setJobs] = useState([]);
+  // const [jobs, setJobs] = useState([]);
   const params = useParams();
   const companyFromRedux = useSelector((state) => state.company.stock);
 
@@ -39,7 +39,7 @@ const CompanySearchResults = () => {
     <Container>
       <Row>
         <Col>
-          {jobs.map((jobData) => (
+          {companyFromRedux.map((jobData) => (
             <Job key={jobData._id} data={jobData} />
           ))}
         </Col>
