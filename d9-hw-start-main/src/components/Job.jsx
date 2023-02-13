@@ -40,7 +40,7 @@ const Job = ({ data }) => {
           />
         </Col>
       ) : (
-        <div>You need to log in first!</div>
+        <div>LogIn to add your favorite job</div>
       )}
     </Row>
   );
