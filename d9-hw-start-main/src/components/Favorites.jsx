@@ -6,6 +6,7 @@ import { Button, Container, Table } from "react-bootstrap";
 import { format, parseISO } from "date-fns";
 import { useState } from "react";
 import { MDBCollapse, MDBBtn } from "mdb-react-ui-kit";
+import { removeFromFavoritesAction } from "../redux/actions";
 
 const Favorites = () => {
   const [showShow, setShowShow] = useState(false);
@@ -34,10 +35,7 @@ const Favorites = () => {
                       className="ml-5"
                       variant="danger"
                       onClick={() => {
-                        dispatch({
-                          type: "REMOVE_FROM_FAVORITE",
-                          payload: i,
-                        });
+                        dispatch(removeFromFavoritesAction(i));
                       }}
                     >
                       <FaTrash />

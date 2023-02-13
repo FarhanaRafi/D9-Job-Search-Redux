@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { AiFillHeart } from "react-icons/ai";
 import { useState } from "react";
+import { addToFavoritesAction } from "../redux/actions";
 
 const Job = ({ data }) => {
   const dispatch = useDispatch();
@@ -31,10 +32,7 @@ const Job = ({ data }) => {
           color={active ? "dodgerblue" : "black"}
           onClick={() => {
             buttonClick();
-            dispatch({
-              type: "ADD_TO_FAVORITES",
-              payload: data,
-            });
+            dispatch(addToFavoritesAction(data));
           }}
         />
       </Col>
