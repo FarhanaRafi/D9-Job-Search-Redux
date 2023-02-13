@@ -4,10 +4,12 @@ import { useDispatch } from "react-redux";
 import { AiFillHeart } from "react-icons/ai";
 import { useState } from "react";
 import { addToFavoritesAction } from "../redux/actions";
+import { useSelector } from "react-redux";
 
 const Job = ({ data }) => {
   const dispatch = useDispatch();
   const [active, setActive] = useState(false);
+  const userName = useSelector((state) => state.user.name);
 
   const buttonClick = () => {
     setActive(!active);
@@ -25,17 +27,21 @@ const Job = ({ data }) => {
           {data.title}
         </a>
       </Col>
-      <Col xs={3}>
-        {/* onClick={buttonClick} */}
-        <AiFillHeart
-          style={{ fontSize: 25 }}
-          color={active ? "dodgerblue" : "black"}
-          onClick={() => {
-            buttonClick();
-            dispatch(addToFavoritesAction(data));
-          }}
-        />
-      </Col>
+      {userName ? (
+        <Col xs={3}>
+          {/* onClick={buttonClick} */}
+          <AiFillHeart
+            style={{ fontSize: 25 }}
+            color={active ? "dodgerblue" : "black"}
+            onClick={() => {
+              buttonClick();
+              dispatch(addToFavoritesAction(data));
+            }}
+          />
+        </Col>
+      ) : (
+        <div>You need to log in first!</div>
+      )}
     </Row>
   );
 };
