@@ -31,10 +31,8 @@ function Header() {
       ) : (
         <Form
           onSubmit={(e) => {
-            e.preventDefault(); // avoids refreshing the page
+            e.preventDefault();
             dispatch(setUsernameAction(inputValue));
-            // we want the content of the input field to reach the reducer
-            // and become the new state.user.name :)
           }}
         >
           <Form.Group>

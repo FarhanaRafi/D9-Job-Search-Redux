@@ -60,28 +60,3 @@ const Favorites = () => {
 };
 
 export default Favorites;
-
-// <Row>
-//   <h1>Favorites</h1>
-//   <Col sm={12}>
-//     <ul style={{ listStyle: "none" }}>
-//       {favorite.map((job, i) => (
-//         <li key={i} className="my-4">
-//           <Link to={`/${job.company_name}`}>{job.company_name} </Link>
-//           <Button
-//             className="ml-5"
-//             variant="danger"
-//             onClick={() => {
-//               dispatch({
-//                 type: "REMOVE_FROM_FAVORITE",
-//                 payload: i,
-//               });
-//             }}
-//           >
-//             <FaTrash />
-//           </Button>
-//         </li>
-//       ))}
-//     </ul>
-//   </Col>
-// </Row>
