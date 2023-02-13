@@ -1,6 +1,7 @@
 export const ADD_TO_FAVORITES = "ADD_TO_FAVORITES";
 export const REMOVE_FROM_FAVORITE = "REMOVE_FROM_FAVORITE";
 export const GET_COMPANY = "GET_COMPANY";
+export const SET_USERNAME = "SET_USERNAME";
 
 export const addToFavoritesAction = (data) => {
   return {
@@ -35,5 +36,12 @@ export const getCompanyActionAsync = (q) => {
     } catch (err) {
       console.log(err);
     }
+  };
+};
+
+export const setUsernameAction = (name) => {
+  return {
+    type: SET_USERNAME,
+    payload: name,
   };
 };
