@@ -57,7 +57,13 @@ const MainSearch = () => {
           </Form>
         </Col>
         <Col xs={10} className="mx-auto mb-5">
-          {loadingSpinner && <Spinner animation="border" variant="success" />}
+          {loadingSpinner && (
+            <Spinner
+              animation="border"
+              variant="success"
+              className="spinners"
+            />
+          )}
           {error && <Alert variant="danger">Something went wrong</Alert>}
           {jobFromRedux.map((jobData) => (
             <Job key={jobData._id} data={jobData} />
