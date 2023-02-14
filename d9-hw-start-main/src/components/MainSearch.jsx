@@ -6,34 +6,14 @@ import { getJobActionAsync } from "../redux/actions";
 
 const MainSearch = () => {
   const [query, setQuery] = useState("");
-  // const [jobs, setJobs] = useState([]);
   const jobFromRedux = useSelector((state) => state.job.jobDetails);
   const dispatch = useDispatch();
   const loadingSpinner = useSelector((state) => state.job.isLoading);
   const error = useSelector((state) => state.job.isError);
 
-  // const baseEndpoint =
-  //   "https://strive-benchmark.herokuapp.com/api/jobs?search=";
-
   const handleChange = (e) => {
     setQuery(e.target.value);
   };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const response = await fetch(baseEndpoint + query + "&limit=20");
-  //     if (response.ok) {
-  //       const { data } = await response.json();
-  //       setJobs(data);
-  //     } else {
-  //       alert("Error fetching results");
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   return (
     <Container>
