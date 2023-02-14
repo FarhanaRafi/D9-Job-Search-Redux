@@ -3,6 +3,8 @@ export const REMOVE_FROM_FAVORITE = "REMOVE_FROM_FAVORITE";
 export const GET_COMPANY = "GET_COMPANY";
 export const SET_USERNAME = "SET_USERNAME";
 export const GET_JOBS = "GET_JOBS";
+export const GET_LOADING = "GET_LOADING";
+export const GET_ERROR = "GET_ERROR";
 
 export const addToFavoritesAction = (data) => {
   return {
@@ -31,11 +33,29 @@ export const getCompanyActionAsync = (q) => {
           type: GET_COMPANY,
           payload: data,
         });
+        dispatch({
+          type: GET_LOADING,
+          payload: false,
+        });
       } else {
-        alert("Error fetching results");
+        dispatch({
+          type: GET_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: GET_ERROR,
+          payload: true,
+        });
       }
     } catch (err) {
-      console.log(err);
+      dispatch({
+        type: GET_LOADING,
+        payload: false,
+      });
+      dispatch({
+        type: GET_ERROR,
+        payload: true,
+      });
     }
   };
 };
@@ -54,11 +74,29 @@ export const getJobActionAsync = (query) => {
           type: GET_JOBS,
           payload: data,
         });
+        dispatch({
+          type: GET_LOADING,
+          payload: false,
+        });
       } else {
-        alert("Error fetching results");
+        dispatch({
+          type: GET_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: GET_ERROR,
+          payload: true,
+        });
       }
     } catch (error) {
-      console.log(error);
+      dispatch({
+        type: GET_LOADING,
+        payload: false,
+      });
+      dispatch({
+        type: GET_ERROR,
+        payload: true,
+      });
     }
   };
 };
